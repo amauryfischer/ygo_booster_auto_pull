@@ -23,6 +23,8 @@ class Tool
   end
 
   def booster(name: "Legend of Blue Eyes White Dragon")
+    `sudo rm -r -f booster`
+    `mkdir booster`
     encoded_name = URI.encode name
     client = RestClient.get('https://www.ygohub.com/api/set_info?name='+encoded_name)
     res = JSON.parse(client.body)["set"]["language_cards"]["English (world)"]
